@@ -1,0 +1,22 @@
+
+.body{
+    background: red;
+}
+#wrapper {
+    width: 1005px;
+    margin: 0 auto;
+}
+#left, #right {
+   border: 1px solid black;
+   float: left;
+}
+#left{
+    margin-right: 20px;
+    width: 250px;
+
+}
+#right{
+    
+    width: 750px;
+   
+}

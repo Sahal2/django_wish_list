@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{%url 'dashboard' %}">HOME</a> <a href="{%url 'logout'%}">LOGOUT</a>
+    <h1>{{request.session.item_name}}</h1>
+    <h2>Users who added this product/item under their wish list:</h2>
+    <div>
+        {% for user in users %}
+        <p>{{user}}</p>
+        {%endfor %}
+    </div>
+    
+</body>
+</html>

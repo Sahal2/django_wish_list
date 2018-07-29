@@ -1,0 +1,34 @@
+DIV.table 
+{   
+    border: 5px solid blue;
+    width:80%;
+    margin: 0 auto;
+    display:table;
+}
+FORM.tr, DIV.tr
+{
+    
+    display:table-row;
+}
+input.td{
+    margin: 0 auto;
+}
+SPAN.td
+{   
+    width: 15%;
+    border-radius: 2px;
+    border: 5px solid red;
+    height: 50px;
+    display:table-cell;
+}
+#wrapper{
+
+    margin-top:3%;
+}
+header{
+    font-size: 70px;
+}
+#id{
+    width: 3%;
+    margin: 0 auto;
+}

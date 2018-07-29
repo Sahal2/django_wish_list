@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'login_reg/css/dashboard.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+
+<body>
+    <h1>Hello, {{users.0}}!</h1>
+    <a href="{%url 'logout'%}">LOGOUT</a>
+    <h2>Your wish list items:</h2>
+    <div id="wrapper">
+        <div class="table">
+                <form class="tr" method="post" action="/process">
+                    {% csrf_token %}
+                    <span class="td" >Item: </span>
+                    <span class="td">Added By:</span>
+                    <span class="td">Date Added: </span>
+                    <span class="td">Actions</span>
+                </form>
+            </div>
+        {% for key,items in items.items %}
+                <div class="table">
+                    <form class="tr" method="post" action="/process">
+                        {% csrf_token %}
+                        <span class="td"><a href="{%url 'show_item' id=key%}">{{items.0}}</a></span>
+                        <span class="td">{{items.1}}</span>
+                        <span class="td">{{items.2}}</span>
+                        {%if items.1 == users.0%}
+                        <span class="td"> <a href="{%url 'delete' delete_item_id=key %}">Delete</a></span>
+                        {% else %}
+                        <span class="td"> <a href="{%url 'remove_from_list' rem_item_id=key %}">Remove From My Wishlist</a></span>
+                        {% endif %}
+                    </form>
+                </div>
+        {%endfor %}
+
+        <h2>Others wish list item</h2>
+    <div id="wrapper">
+        <div class="table">
+                <form class="tr" method="post" action="/process">
+                    {% csrf_token %}
+                    <span class="td" >Item: </span>
+                    <span class="td">Added By:</span>
+                    <span class="td">Date Added: </span>
+                    <span class="td">Actions</span>
+                </form>
+            </div>
+        {% for items in other_users %}
+                <div class="table">
+                    <form class="tr" method="post" action="/process">
+                        {% csrf_token %}
+                        <span class="td"><a href="{%url 'show_item' id=items.3%}">{{items.0}}</a></span>
+                        <span class="td">{{items.2}}</span>
+                        <span class="td">{{items.1}}</span>
+                        <span class="td"><a href="{%url 'add_to_list' item_id=items.3 %}">Add to my wishlist</a></span>
+                    </form>
+                </div>
+        {%endfor %}
+        <a href="{%url 'add_items' %}">Add Item</a>
+    </div>
+</body>
+</html>

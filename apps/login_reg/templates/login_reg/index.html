@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'login_reg/css/index.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+
+<body>
+<div>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="messages.INFO">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</div>
+<div id="wrapper">
+    <form id="left" action="{%url 'register' %}" method="POST">
+    <h1>Register</h1>
+    {% csrf_token %}
+    
+    <p>Name: <input name="name" type="text"></p>
+    <p>Username: <input name="username" type="text"></p>
+    <p>Password: <input name="passw" type="password"></p></p>
+    <p>Confirm Password: <input name="confirm_passw" type="password"></p> </p>
+    <p>Date Hired: <input name="date", type="date">  </p>
+    <input type="submit" name="" id="">
+    </form>
+    
+    <form id="left" action="{%url 'login' %}" method="POST">
+            <h1>Login</h1>
+        {% csrf_token %}
+        <p>Username: <input name="username" type="text" value="Sal"></p>
+        <p>Password: <input name="passw" type="password" value="1234"></p>
+        <input type="submit" name="" id="">
+    </form>
+</div>
+</body>
+</html>
